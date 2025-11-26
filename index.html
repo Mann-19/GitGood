@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Git Essentials</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -10,500 +10,457 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
+    
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: "#3CB35A",
-              "primary-dark": "#2E8B46",
-              "primary-light": "#E8F5E9",
-            },
-            fontFamily: {
-              sans: ["Inter", "sans-serif"],
-              mono: ["Fira Code", "monospace"],
-            },
-            animation: {
-              "fade-in": "fadeIn 0.3s ease-out forwards",
-            },
-            keyframes: {
-              fadeIn: {
-                "0%": { opacity: "0", transform: "translateY(10px)" },
-                "100%": { opacity: "1", transform: "translateY(0)" },
-              },
-            },
-          },
-        },
-      };
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3CB35A',
+                        'primary-dark': '#2E8B46',
+                        'primary-light': '#E8F5E9',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
     </script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    
     <style>
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: #fafafa;
-        color: #1f2937;
-      }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAFAFA;
+            color: #1F2937;
+        }
 
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f3f4f6;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #d1d5db;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #9ca3af;
-      }
-
-      /* Markdown Styles */
-      .markdown-body h1 {
-        font-size: 2.25rem;
-        font-weight: 700;
-        margin-bottom: 1.5rem;
-        color: #111827;
-        letter-spacing: -0.025em;
-      }
-      .markdown-body h2 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-top: 3rem;
-        margin-bottom: 1rem;
-        color: #1f2937;
-        border-bottom: 1px solid #e5e7eb;
-        padding-bottom: 0.75rem;
-      }
-      .markdown-body h3 {
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-top: 2rem;
-        margin-bottom: 0.75rem;
-        color: #374151;
-      }
-      .markdown-body p {
-        margin-bottom: 1.25rem;
-        line-height: 1.75;
-        color: #4b5563;
-        font-weight: 300;
-      }
-      .markdown-body ul {
-        list-style-type: disc;
-        padding-left: 1.5rem;
-        margin-bottom: 1.5rem;
-        color: #4b5563;
-      }
-      .markdown-body li {
-        margin-bottom: 0.5rem;
-      }
-      .markdown-body strong {
-        color: #111827;
-        font-weight: 600;
-      }
-      .markdown-body code {
-        background-color: #f3f4f6;
-        color: #dc2626;
-        padding: 0.2rem 0.4rem;
-        border-radius: 0.25rem;
-        font-family: "Fira Code", monospace;
-        font-size: 0.85em;
-      }
-      .markdown-body pre {
-        background-color: #1f2937;
-        padding: 1.25rem;
-        border-radius: 0.5rem;
-        overflow-x: auto;
-        margin-bottom: 1.5rem;
-        margin-top: 1rem;
-        border: 1px solid #e5e7eb;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      }
-      .markdown-body pre code {
-        background-color: transparent;
-        padding: 0;
-        color: #e5e7eb;
-        font-size: 0.9em;
-      }
-      .markdown-body blockquote {
-        border-left: 4px solid #3cb35a;
-        padding-left: 1rem;
-        font-style: italic;
-        color: #4b5563;
-        background: #f9fafb;
-        padding: 1rem;
-        margin-top: 1.5rem;
-        margin-bottom: 1.5rem;
-        border-radius: 0 0.5rem 0.5rem 0;
-      }
-      .markdown-body hr {
-        border: 0;
-        height: 1px;
-        background: #e5e7eb;
-        margin: 3rem 0;
-      }
-
-      /* Navigation Active State */
-      .nav-active {
-        color: #3cb35a;
-        border-bottom: 2px solid #3cb35a;
-      }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F3F4F6; }
+        ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9CA3AF; }
+        
+        /* Markdown Styles for Reference Docs */
+        .markdown-body h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 1.5rem; color: #111827; letter-spacing: -0.025em; }
+        .markdown-body h2 { font-size: 1.5rem; font-weight: 600; margin-top: 3rem; margin-bottom: 1rem; color: #1F2937; border-bottom: 1px solid #E5E7EB; padding-bottom: 0.75rem; }
+        .markdown-body h3 { font-size: 1.25rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #374151; }
+        .markdown-body p { margin-bottom: 1.25rem; line-height: 1.75; color: #4B5563; font-weight: 300; }
+        .markdown-body ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; color: #4B5563; }
+        .markdown-body li { margin-bottom: 0.5rem; }
+        .markdown-body strong { color: #111827; font-weight: 600; }
+        .markdown-body code { background-color: #F3F4F6; color: #DC2626; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: 'Fira Code', monospace; font-size: 0.85em; }
+        .markdown-body pre { background-color: #1F2937; padding: 1.25rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.5rem; margin-top: 1rem; border: 1px solid #E5E7EB; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .markdown-body pre code { background-color: transparent; padding: 0; color: #E5E7EB; font-size: 0.9em; }
+        .markdown-body blockquote { border-left: 4px solid #3CB35A; padding-left: 1rem; font-style: italic; color: #4B5563; background: #F9FAFB; padding: 1rem; margin-top: 1.5rem; margin-bottom: 1.5rem; border-radius: 0 0.5rem 0.5rem 0; }
+        
+        /* Navigation Active State */
+        .nav-active { color: #3CB35A; border-bottom: 2px solid #3CB35A; }
     </style>
-  </head>
-  <body class="flex flex-col min-h-screen">
+</head>
+<body class="flex flex-col min-h-screen">
+
     <!-- Top Header -->
     <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div
-        class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between"
-      >
-        <!-- Logo triggers Home View -->
-        <button
-          onclick="loadHome()"
-          class="flex items-center gap-3 group focus:outline-none"
-        >
-          <i
-            class="ph-fill ph-git-branch text-primary text-2xl group-hover:scale-110 transition-transform"
-          ></i>
-          <span class="font-bold text-lg tracking-tight text-gray-900"
-            >Git<span class="text-primary">Essentials</span></span
-          >
-        </button>
-
-        <nav class="hidden md:flex space-x-8">
-          <button
-            onclick="loadLevel(0)"
-            id="nav-0"
-            class="text-sm font-medium text-gray-500 hover:text-primary transition-colors py-5 border-b-2 border-transparent"
-          >
-            01. Basics
-          </button>
-          <button
-            onclick="loadLevel(1)"
-            id="nav-1"
-            class="text-sm font-medium text-gray-500 hover:text-primary transition-colors py-5 border-b-2 border-transparent"
-          >
-            02. Remote & Sync
-          </button>
-          <button
-            onclick="loadLevel(2)"
-            id="nav-2"
-            class="text-sm font-medium text-gray-500 hover:text-primary transition-colors py-5 border-b-2 border-transparent"
-          >
-            03. Recovery
-          </button>
-        </nav>
-
-        <button class="md:hidden text-gray-500">
-          <i class="ph ph-list text-2xl"></i>
-        </button>
-      </div>
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <button onclick="loadHome()" class="flex items-center gap-3 group focus:outline-none">
+                <i class="ph-fill ph-git-branch text-primary text-2xl group-hover:scale-110 transition-transform"></i>
+                <span class="font-bold text-lg tracking-tight text-gray-900">Git<span class="text-primary">Essentials</span></span>
+            </button>
+            
+            <nav class="hidden md:flex space-x-8">
+                <button onclick="loadHome()" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors py-5 border-b-2 border-transparent">
+                    Home
+                </button>
+                <button onclick="scrollToWorkflows()" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors py-5 border-b-2 border-transparent">
+                    Scenarios
+                </button>
+                <button onclick="scrollToDocs()" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors py-5 border-b-2 border-transparent">
+                    Reference
+                </button>
+            </nav>
+        </div>
     </header>
 
     <!-- Main Content Area -->
-    <main class="flex-grow w-full max-w-4xl mx-auto px-6 py-12">
-      <!-- SECTION: INTRO VIEW (Visible on Load) -->
-      <div id="intro-view" class="animate-fade-in block">
-        <div class="text-center py-10 max-w-2xl mx-auto">
-          <h1
-            class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-6"
-          >
-            Version Control, <br /><span class="text-primary"
-              >Without the Confusion.</span
-            >
-          </h1>
-          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-            A streamlined, jargon-free guide to mastering Git. Learn the
-            industry-standard commands needed to manage code, collaborate with
-            teams, and recover from mistakes.
-          </p>
-          <button
-            onclick="loadLevel(0)"
-            class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white transition-all duration-200 bg-primary rounded-full hover:bg-primary-dark hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-          >
-            Start Learning - Module 01
-            <i class="ph-bold ph-arrow-right ml-2"></i>
-          </button>
-        </div>
-
-        <!-- What is Git Section -->
-        <div
-          class="mt-16 bg-white rounded-2xl p-8 border border-gray-100 shadow-sm"
-        >
-          <div class="flex items-start gap-4">
-            <div
-              class="p-3 bg-primary-light rounded-lg text-primary flex-shrink-0"
-            >
-              <i class="ph-fill ph-question text-2xl"></i>
+    <main class="flex-grow w-full max-w-6xl mx-auto px-6 py-12">
+        
+        <!-- ==================== HOME VIEW ==================== -->
+        <div id="intro-view" class="animate-fade-in block">
+            <!-- Hero Section -->
+            <div class="text-center py-10 max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-6">
+                    Version Control, <br/><span class="text-primary">Without the Confusion.</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    A streamlined, jargon-free guide to mastering Git. Learn the industry-standard commands needed to manage code, collaborate with teams, and recover from mistakes.
+                </p>
+                <button onclick="loadScenario(0)" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white transition-all duration-200 bg-primary rounded-full hover:bg-primary-dark hover:shadow-lg hover:-translate-y-0.5">
+                    Start Learning Workflow
+                    <i class="ph-bold ph-arrow-right ml-2"></i>
+                </button>
             </div>
-            <div>
-              <h3 class="text-xl font-bold text-gray-900 mb-2">What is Git?</h3>
-              <p class="text-gray-600 leading-relaxed">
-                Git is a "time machine" for your code. It saves snapshots of
-                your project history, allowing you to travel back to previous
-                versions, work on new features without breaking existing code,
-                and combine work from multiple people. It is the fundamental
-                tool for modern software development.
-              </p>
+
+            <!-- SECTION 1: SCENARIOS (Workflows) -->
+            <div id="workflows-section" class="mt-16">
+                <div class="flex items-center gap-3 mb-6 border-b border-gray-200 pb-4">
+                    <h2 class="text-2xl font-bold text-gray-900">Real-World Workflows</h2>
+                    <span class="bg-primary-light text-primary-dark text-xs font-bold px-2 py-1 rounded-full">Scenario Based</span>
+                </div>
+                
+                <!-- Dynamic Category Rendering -->
+                <div id="scenario-grid-container" class="space-y-12">
+                    <!-- Categories will be injected here via JS -->
+                </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Module Grid -->
-        <div class="grid md:grid-cols-3 gap-6 mt-12">
-          <!-- Card 1 -->
-          <div
-            onclick="loadLevel(0)"
-            class="group cursor-pointer bg-white p-6 rounded-xl border border-gray-200 hover:border-primary hover:shadow-md transition-all"
-          >
-            <div
-              class="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-light transition-colors"
-            >
-              <i
-                class="ph-fill ph-compass text-2xl text-gray-400 group-hover:text-primary"
-              ></i>
+            <!-- SECTION 2: REFERENCE (Docs) -->
+            <div id="docs-section" class="mt-20 mb-20">
+                <div class="flex items-center gap-3 mb-6 border-b border-gray-200 pb-4">
+                    <h2 class="text-2xl font-bold text-gray-900">Reference Documentation</h2>
+                    <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded-full">Manual</span>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Beginner -->
+                    <div onclick="loadDoc(0)" class="group cursor-pointer bg-white p-6 rounded-xl border border-gray-200 hover:border-primary hover:shadow-md transition-all">
+                        <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors text-primary">
+                            <i class="ph-fill ph-plant text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Beginner</h3>
+                        <p class="text-sm text-gray-500 mb-4">Essential commands for absolute starters. Init, clone, commit, push.</p>
+                        <div class="text-xs font-mono text-gray-400 bg-gray-50 p-2 rounded">git init, git status</div>
+                    </div>
+
+                    <!-- Intermediate -->
+                    <div onclick="loadDoc(1)" class="group cursor-pointer bg-white p-6 rounded-xl border border-gray-200 hover:border-primary hover:shadow-md transition-all">
+                        <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-500 group-hover:text-white transition-colors text-blue-500">
+                            <i class="ph-fill ph-users text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Intermediate</h3>
+                        <p class="text-sm text-gray-500 mb-4">Team workflows. Fetching, merging, stashing, and PRs.</p>
+                        <div class="text-xs font-mono text-gray-400 bg-gray-50 p-2 rounded">git fetch, git merge</div>
+                    </div>
+
+                    <!-- Advanced -->
+                    <div onclick="loadDoc(2)" class="group cursor-pointer bg-white p-6 rounded-xl border border-gray-200 hover:border-primary hover:shadow-md transition-all">
+                        <div class="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-500 group-hover:text-white transition-colors text-purple-500">
+                            <i class="ph-fill ph-magic-wand text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Advanced</h3>
+                        <p class="text-sm text-gray-500 mb-4">Complex problem solving. Rebase, reflog, cherry-pick.</p>
+                        <div class="text-xs font-mono text-gray-400 bg-gray-50 p-2 rounded">git rebase, git reflog</div>
+                    </div>
+                </div>
             </div>
-            <h3 class="font-bold text-gray-900 mb-2">01. The Basics</h3>
-            <p class="text-sm text-gray-500">
-              Initialize a project, stage files, and save your work history
-              locally.
-            </p>
-          </div>
+        </div>
+        
+        <!-- ==================== SCENARIO VIEW ==================== -->
+        <div id="scenario-view" class="hidden max-w-4xl mx-auto">
+            <button onclick="loadHome()" class="mb-6 text-sm text-gray-500 hover:text-primary flex items-center gap-2 transition-colors">
+                <i class="ph ph-arrow-left"></i> Back to Workflows
+            </button>
 
-          <!-- Card 2 -->
-          <div
-            onclick="loadLevel(1)"
-            class="group cursor-pointer bg-white p-6 rounded-xl border border-gray-200 hover:border-primary hover:shadow-md transition-all"
-          >
-            <div
-              class="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-light transition-colors"
-            >
-              <i
-                class="ph-fill ph-globe text-2xl text-gray-400 group-hover:text-primary"
-              ></i>
+            <div id="scenario-content" class="animate-fade-in">
+                <!-- Injected via JS -->
             </div>
-            <h3 class="font-bold text-gray-900 mb-2">02. Collaboration</h3>
-            <p class="text-sm text-gray-500">
-              Connect to GitHub, push code, pull updates, and manage branches.
-            </p>
-          </div>
-
-          <!-- Card 3 -->
-          <div
-            onclick="loadLevel(2)"
-            class="group cursor-pointer bg-white p-6 rounded-xl border border-gray-200 hover:border-primary hover:shadow-md transition-all"
-          >
-            <div
-              class="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-light transition-colors"
-            >
-              <i
-                class="ph-fill ph-first-aid text-2xl text-gray-400 group-hover:text-primary"
-              ></i>
+            
+            <div class="mt-12 pt-8 border-t border-gray-200 flex justify-between">
+                <button id="prev-scenario-btn" class="text-sm font-medium text-gray-500 hover:text-gray-900" onclick="prevScenario()">Previous</button>
+                <button id="next-scenario-btn" class="text-sm font-medium text-white bg-primary hover:bg-primary-dark px-6 py-2 rounded-full shadow-sm" onclick="nextScenario()">Next Workflow</button>
             </div>
-            <h3 class="font-bold text-gray-900 mb-2">03. Recovery</h3>
-            <p class="text-sm text-gray-500">
-              Undo mistakes, fix bad commits, and resolve merge conflicts.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION: LEVEL VIEW (Hidden on Load) -->
-      <div id="level-view" class="hidden">
-        <div id="content-container" class="animate-fade-in">
-          <div id="markdown-render" class="markdown-body">
-            <!-- Markdown Content Injected Here -->
-          </div>
         </div>
 
-        <!-- Pagination -->
-        <div
-          class="mt-16 pt-8 border-t border-gray-200 flex justify-between items-center"
-        >
-          <button
-            id="prev-btn"
-            class="hidden group flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors"
-            onclick="prevLevel()"
-          >
-            <i
-              class="ph ph-arrow-left mr-2 transition-transform group-hover:-translate-x-1"
-            ></i>
-            Previous
-          </button>
-          <div class="flex-grow"></div>
-          <button
-            id="next-btn"
-            class="group flex items-center text-sm font-medium text-white bg-primary hover:bg-primary-dark px-6 py-2.5 rounded-full transition-all shadow-sm hover:shadow-md"
-            onclick="nextLevel()"
-          >
-            Next Module
-            <i
-              class="ph ph-arrow-right ml-2 transition-transform group-hover:translate-x-1"
-            ></i>
-          </button>
+        <!-- ==================== DOC VIEW ==================== -->
+        <div id="doc-view" class="hidden max-w-4xl mx-auto">
+            <button onclick="loadHome()" class="mb-6 text-sm text-gray-500 hover:text-primary flex items-center gap-2 transition-colors">
+                <i class="ph ph-arrow-left"></i> Back to Reference
+            </button>
+
+            <div id="doc-content-container" class="animate-fade-in">
+                <div id="markdown-render" class="markdown-body">
+                    <!-- Markdown Content Injected Here -->
+                </div>
+            </div>
         </div>
 
-        <!-- FAQ Section -->
-        <div class="mt-24">
-          <h3
-            class="text-xl font-bold text-gray-900 mb-8 border-l-4 border-primary pl-4"
-          >
-            Common Troubleshooting
-          </h3>
-          <div class="grid md:grid-cols-2 gap-6" id="faq-container">
-            <!-- FAQs Injected Here -->
-          </div>
-        </div>
-      </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-50 border-t border-gray-200 mt-20 py-12">
-      <div class="max-w-5xl mx-auto px-6 text-center text-gray-400 text-sm">
-        <p>&copy; 2025 Git Essentials. Open Source Education.</p>
-      </div>
+    <footer class="bg-white border-t border-gray-200 mt-12 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-gray-400 text-sm">
+            <p>&copy; 2025 Git Essentials.</p>
+        </div>
     </footer>
 
     <script>
-      // --- Content Data ---
-      const levels = [
-        {
-          title: "Basics",
-          content: `# Module 01: Local Version Control\n\nGit is a distributed version control system that tracks changes in any set of computer files. It is the industry standard for coordinating work among programmers.\n\n---\n\n## 1. Initialize Repository (\`git init\`)\nCreate a new Git repository. This converts an existing project directory into a Git repository.\n* **Command:** \`git init\`\n* **Effect:** Creates a hidden \`.git\` directory that tracks version history.\n* **Usage:** Run this once in the root folder of your new project.\n\n## 2. Check Status (\`git status\`)\nDisplays the state of the working directory and the staging area.\n* **Command:** \`git status\`\n* **Effect:** Shows which files have changed, which are untracked, and which are staged for commit.\n* **Best Practice:** Run this frequently to understand the state of your changes.\n\n## 3. Stage Changes (\`git add\`)\nAdds file contents to the index (staging area). This prepares changes to be committed.\n* **Command:** \`git add <filename>\` or \`git add .\` (stages all changes)\n* **Concept:** Think of this as selecting which specific changes you want to include in your next save point.\n\n## 4. Commit Changes (\`git commit\`)\nRecords changes to the repository. This creates a permanent snapshot of the staged changes.\n* **Command:** \`git commit -m "Descriptive message"\`\n* **Effect:** Saves the staged history.\n* **Industry Standard:** Commit messages should be imperative and descriptive (e.g., "Add user authentication" instead of "added auth").\n\n## 5. View History (\`git log\`)\nShows the commit logs.\n* **Command:** \`git log\`\n* **Effect:** Lists author, date, and message for previous commits.\n* **Pro Tip:** Use \`git log --oneline\` for a concise view.`,
-        },
-        {
-          title: "Remote & Sync",
-          content: `# Module 02: Remotes & Collaboration\n\nCollaborating usually involves syncing your local repository with a remote server (like GitHub or GitLab).\n\n---\n\n## 1. Clone Repository (\`git clone\`)\nClone a repository into a new directory.\n* **Command:** \`git clone <repository-url>\`\n* **Effect:** Downloads the entire project history and sets up a local copy.\n* **Usage:** Use this when starting work on an existing project.\n\n## 2. Push Changes (\`git push\`)\nUpdate remote refs along with associated objects.\n* **Command:** \`git push -u origin main\`\n* **Effect:** Uploads your local commits to the remote server.\n* **Note:** The \`-u\` flag sets the upstream tracking, so you can just use \`git push\` in the future.\n\n## 3. Pull Changes (\`git pull\`)\nFetch from and integrate with another repository or a local branch.\n* **Command:** \`git pull\`\n* **Effect:** Downloads changes from the remote server and merges them into your current working directory.\n* **Best Practice:** Always pull before starting new work to ensure you have the latest codebase.\n\n## 4. Branching (\`git branch\`)\nBranches allow you to develop features, fix bugs, or safely experiment with new ideas in a contained area of your repository.\n* **Command:** \`git checkout -b <branch-name>\`\n* **Effect:** Creates a new branch and switches to it immediately.\n* **Workflow:** \n  1. Create branch: \`git checkout -b feature/login-page\`\n  2. Make changes and commit.\n  3. Push branch: \`git push -u origin feature/login-page\``,
-        },
-        {
-          title: "Recovery",
-          content: `# Module 03: Undo & Recovery\n\nAdvanced commands for correcting mistakes and managing project history.\n\n---\n\n## 1. Unstage Files (\`git reset\`)\nIf you accidentally staged a file with \`git add\` but didn't mean to.\n* **Command:** \`git reset <file>\`\n* **Effect:** Removes the file from the staging area but keeps the modifications in your working directory.\n\n## 2. Discard Changes (\`git restore\`)\nReverts a file to the state of the last commit.\n* **Command:** \`git restore <file>\`\n* **Warning:** This action is destructive. Any unsaved changes in that file will be lost permanently.\n\n## 3. Amend Commit (\`git commit --amend\`)\nModify the most recent commit. Useful for fixing typos in commit messages or adding a forgotten file.\n* **Command:** Stage changes, then \`git commit --amend\`\n* **Constraint:** Do not amend commits that have already been pushed to a shared remote.\n\n## 4. Stashing (\`git stash\`)\nTemporarily shelves changes so you can work on something else.\n* **Command:** \`git stash\`\n* **Effect:** Saves uncommitted changes to a temporary stack and cleans the working directory.\n* **Retrieval:** Use \`git stash pop\` to re-apply the changes later.\n\n## 5. Handling Merge Conflicts\nOccurs when Git cannot automatically resolve differences in code between two commits.\n* **Resolution:**\n    1. Open the conflicted file.\n    2. Locate markers \`<<<<<<<\`, \`=======\`, \`>>>>>>>\`.\n    3. Manually edit code to the desired state.\n    4. Run \`git add\` to mark as resolved.`,
-        },
-      ];
+        // --- DATA: SCENARIOS (17 Workflows across 5 Categories) ---
+        const categories = [
+            { id: 'cat-a', title: 'Category A — Getting Started', desc: 'Workflows every beginner must know.' },
+            { id: 'cat-b', title: 'Category B — Working on Features', desc: 'Real-life team scenarios.' },
+            { id: 'cat-c', title: 'Category C — Code Review & Collaboration', desc: 'Pull requests and peer review.' },
+            { id: 'cat-d', title: 'Category D — Problem Solving', desc: 'Critical situations beginners panic in.' },
+            { id: 'cat-e', title: 'Category E — Professional Workflows', desc: 'Releases, forks, and hooks.' }
+        ];
 
-      const faqs = [
-        {
-          q: "Push rejected: 'Updates were rejected'",
-          a: "The remote repository has changes you don't have. Run `git pull` to fetch and merge the latest changes, resolve any conflicts, and then push again.",
-        },
-        {
-          q: "Committed to the wrong branch",
-          a: "Soft reset the commit to keep your changes: `git reset HEAD~1`. Then switch to the correct branch and commit there.",
-        },
-        {
-          q: "Exiting Vim editor",
-          a: "If stuck in the default terminal editor: Press `Esc`, type `:wq` (write and quit), and press `Enter`.",
-        },
-        {
-          q: "Detached HEAD state",
-          a: "This means you checked out a specific commit, not a branch. To fix, simply checkout a branch: `git checkout main`.",
-        },
-      ];
+        const scenarios = [
+            // Category A
+            { cat: 'cat-a', title: "1. Create Repo & Push", desc: "Initialize a new project and get it on GitHub.", steps: [
+                { step: 1, title: "Initialize", desc: "Open terminal in your project folder.", code: "git init" },
+                { step: 2, title: "Connect", desc: "Create a repo on GitHub. Copy the URL.", code: "git remote add origin <url>" },
+                { step: 3, title: "Commit", desc: "Save your current files.", code: "git add .\ngit commit -m \"Initial commit\"" },
+                { step: 4, title: "Push", desc: "Upload to the cloud.", code: "git push -u origin main" }
+            ]},
+            { cat: 'cat-a', title: "2. Clone & Setup", desc: "Download an existing project to your machine.", steps: [
+                { step: 1, title: "Clone", desc: "Download the repo.", code: "git clone <url>" },
+                { step: 2, title: "Navigate", desc: "Go into the folder.", code: "cd <project-name>" },
+                { step: 3, title: "Verify", desc: "Check connection.", code: "git remote -v" }
+            ]},
+            { cat: 'cat-a', title: "3. Update Local Code", desc: "Get changes your teammates pushed.", steps: [
+                { step: 1, title: "Check Status", desc: "Ensure you have no uncommitted changes.", code: "git status" },
+                { step: 2, title: "Pull", desc: "Download and merge changes.", code: "git pull origin main" }
+            ]},
 
-      // --- Logic ---
-      let currentLevel = 0;
+            // Category B
+            { cat: 'cat-b', title: "4. Start New Feature", desc: "Create a branch so you don't break main.", steps: [
+                { step: 1, title: "Update Main", desc: "Always start from the latest code.", code: "git checkout main\ngit pull" },
+                { step: 2, title: "Branch", desc: "Create and switch to a new branch.", code: "git checkout -b feature/my-cool-feature" },
+                { step: 3, title: "Work", desc: "Do your coding here. Main is safe." }
+            ]},
+            { cat: 'cat-b', title: "5. Hotfix a Bug", desc: "Fix a production bug quickly.", steps: [
+                { step: 1, title: "Branch from Main", desc: "Production code lives on main.", code: "git checkout main\ngit checkout -b hotfix/login-error" },
+                { step: 2, title: "Fix & Commit", desc: "Apply the patch.", code: "git commit -am \"Fix critical login bug\"" },
+                { step: 3, title: "Push", desc: "Send it up immediately.", code: "git push origin hotfix/login-error" }
+            ]},
+            { cat: 'cat-b', title: "6. Delete a Branch", desc: "Cleanup after a feature is done or abandoned.", steps: [
+                { step: 1, title: "Leave Branch", desc: "You can't delete the branch you are standing on.", code: "git checkout main" },
+                { step: 2, title: "Local Delete", desc: "Delete from your machine.", code: "git branch -d feature/old-feature" },
+                { step: 3, title: "Remote Delete", desc: "Delete from GitHub (optional).", code: "git push origin --delete feature/old-feature" }
+            ]},
 
-      function loadHome() {
-        // Show Intro, Hide Levels
-        document.getElementById("intro-view").classList.remove("hidden");
-        document.getElementById("intro-view").classList.add("block");
-        document.getElementById("level-view").classList.add("hidden");
-        document.getElementById("level-view").classList.remove("block");
+            // Category C
+            { cat: 'cat-c', title: "7. Create Pull Request", desc: "Submit your code for review.", steps: [
+                { step: 1, title: "Push Branch", desc: "Upload your feature branch.", code: "git push -u origin feature/my-feature" },
+                { step: 2, title: "Open GitHub", desc: "Go to the repo URL. You'll see a 'Compare & Pull Request' button." },
+                { step: 3, title: "Description", desc: "Fill out what you changed and why." }
+            ]},
+            { cat: 'cat-c', title: "8. Review Teammate's PR", desc: "Check someone else's code locally.", steps: [
+                { step: 1, title: "Fetch", desc: "Get latest branches.", code: "git fetch" },
+                { step: 2, title: "Checkout", desc: "Switch to their branch.", code: "git checkout feature/their-feature" },
+                { step: 3, title: "Test", desc: "Run the app and test their changes." }
+            ]},
+            { cat: 'cat-c', title: "9. Merge Safely", desc: "Merging via CLI (if not using GitHub UI).", steps: [
+                { step: 1, title: "Checkout Main", desc: "Go to the target branch.", code: "git checkout main" },
+                { step: 2, title: "Pull", desc: "Ensure main is up to date.", code: "git pull" },
+                { step: 3, title: "Merge", desc: "Combine the feature.", code: "git merge feature/completed-task" }
+            ]},
+            { cat: 'cat-c', title: "10. Branch Behind Main", desc: "Update your feature branch with latest main changes.", steps: [
+                { step: 1, title: "Go to Feature", desc: "Switch to your branch.", code: "git checkout feature/my-feature" },
+                { step: 2, title: "Fetch", desc: "Get updates.", code: "git fetch origin" },
+                { step: 3, title: "Merge/Rebase", desc: "Bring main into your branch.", code: "git merge origin/main" }
+            ]},
 
-        // Reset Nav Styles
-        document.querySelectorAll("nav button").forEach((btn) => {
-          btn.classList.remove("nav-active", "text-primary");
-          btn.classList.add("text-gray-500", "border-transparent");
-        });
+            // Category D
+            { cat: 'cat-d', title: "11. Undo Last Commit", desc: "I didn't mean to commit that!", steps: [
+                { step: 1, title: "Soft Reset", desc: "Undo commit, keep changes staged.", code: "git reset --soft HEAD~1" },
+                { step: 2, title: "Mixed Reset", desc: "Undo commit, unstage changes (keep files).", code: "git reset HEAD~1" },
+                { step: 3, title: "Hard Reset", desc: "DELETE changes and commit (Danger).", code: "git reset --hard HEAD~1" }
+            ]},
+            { cat: 'cat-d', title: "12. Recover Lost Work", desc: "I deleted a branch/commit by mistake.", steps: [
+                { step: 1, title: "Reflog", desc: "See the history of all moves.", code: "git reflog" },
+                { step: 2, title: "Find Index", desc: "Locate the entry before the mistake (e.g., HEAD@{5})." },
+                { step: 3, title: "Restore", desc: "Jump back to that point.", code: "git reset --hard HEAD@{5}" }
+            ]},
+            { cat: 'cat-d', title: "13. Solve Conflicts", desc: "Two people edited the same line.", steps: [
+                { step: 1, title: "Identify", desc: "Git will tell you which files conflict.", code: "git status" },
+                { step: 2, title: "Edit", desc: "Open files. Look for `<<<<<<<` and `>>>>>>>` markers. Delete them and choose the correct code." },
+                { step: 3, title: "Resolve", desc: "Mark as done.", code: "git add <file>\ngit commit" }
+            ]},
+            { cat: 'cat-d', title: "14. Bad Merge/Rebase", desc: "Everything is broken, I want to go back.", steps: [
+                { step: 1, title: "Abort", desc: "If in the middle of a merge/rebase.", code: "git merge --abort\n# or\ngit rebase --abort" },
+                { step: 2, title: "Reset", desc: "If already finished, reset to before the merge.", code: "git reset --hard ORIG_HEAD" }
+            ]},
 
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+            // Category E
+            { cat: 'cat-e', title: "15. Working with Forks", desc: "Contributing to Open Source.", steps: [
+                { step: 1, title: "Clone Fork", desc: "Clone YOUR fork, not the original.", code: "git clone <your-fork-url>" },
+                { step: 2, title: "Add Upstream", desc: "Link to the original repo.", code: "git remote add upstream <original-repo-url>" },
+                { step: 3, title: "Sync", desc: "Pull from original, push to your fork.", code: "git pull upstream main\ngit push origin main" }
+            ]},
+            { cat: 'cat-e', title: "16. Release Cycle", desc: "Tagging a version for production.", steps: [
+                { step: 1, title: "Checkout Main", desc: "Ensure you are on the code to release.", code: "git checkout main" },
+                { step: 2, title: "Tag", desc: "Create a version tag.", code: "git tag -a v1.0.0 -m \"Release version 1.0\"" },
+                { step: 3, title: "Push Tags", desc: "Tags are not pushed by default.", code: "git push origin --tags" }
+            ]},
+            { cat: 'cat-e', title: "17. Pre-commit Hooks", desc: "Prevent bad code from being committed.", steps: [
+                { step: 1, title: "Locate", desc: "Go to the hooks folder.", code: "cd .git/hooks" },
+                { step: 2, title: "Create", desc: "Remove .sample extension from `pre-commit.sample`." },
+                { step: 3, title: "Script", desc: "Write a shell script (e.g., run lint) inside. If it fails (exit 1), commit is blocked." }
+            ]}
+        ];
 
-      function loadLevel(index) {
-        currentLevel = index;
+        // --- DATA: REFERENCE DOCS (3 Tiers) ---
+        const docs = [
+            {
+                title: "Beginner",
+                content: `# Beginner Commands & Concepts\n\nThese are essential and safe commands for absolute beginners.\n\n---\n\n## 1. Core Commands\n\n### Setup & Creation\n* **\`git init\`**: Initialize a new repository in the current folder.\n* **\`git clone <url>\`**: Download an existing repository from a remote (like GitHub).\n\n### The Save Cycle\n* **\`git status\`**: Checks what files are changed, staged, or untracked. (Use this constantly!).\n* **\`git add <file>\`**: Moves changes from the Working Directory to the Staging Area.\n* **\`git commit -m "msg"\`**: Saves the staged snapshot to the history.\n\n### Syncing\n* **\`git push\`**: Uploads your commits to the remote server.\n* **\`git pull\`**: Downloads changes from the remote and updates your files.\n\n### Branching\n* **\`git branch\`**: Lists all local branches.\n* **\`git checkout <branch>\`**: Switches to another branch.\n* **\`git log\`**: Shows a simple list of past commits.\n\n---\n\n## 2. Key Concepts\n* **Working Directory**: The actual files on your computer you can edit.\n* **Staging Area**: A "loading dock" where you organize changes before committing.\n* **Commit**: A permanent snapshot of your project at a specific point in time.\n* **Remote**: A common server (GitHub/GitLab) where the team syncs code.`
+            },
+            {
+                title: "Intermediate",
+                content: `# Intermediate Commands & Concepts\n\nCommands used daily once you join a team and collaborate.\n\n---\n\n## 1. Collaboration Commands\n\n### Syncing Smartly\n* **\`git fetch\`**: Downloads remote changes but does **not** update your files. Good for checking what's new safely.\n* **\`git merge <branch>\`**: Combines the specified branch into your current branch.\n\n### Managing Context\n* **\`git stash\`**: "Pauses" your work. Saves uncommitted changes to a clipboard so you can switch branches cleanly.\n* **\`git stash pop\`**: Brings the paused work back.\n\n### Inspection\n* **\`git diff\`**: Shows line-by-line differences between your file and the last commit.\n* **\`git checkout -b <name>\`**: Creates a new branch and switches to it in one step.\n\n### fixing Mistakes\n* **\`git restore <file>\`**: Discards uncommitted changes in a file (Destructive!).\n* **\`git reset --soft HEAD~1\`**: Undoes the last commit but keeps your work staged.\n\n---\n\n## 2. Key Concepts\n* **Merge Conflicts**: When Git can't decide which code is "correct" because two people changed the same line.\n* **Fast-forward**: A merge where Git simply moves the pointer forward because there is no divergent history.\n* **Detached HEAD**: When you check out a specific commit instead of a branch. You are in "read-only" mode effectively.\n* **Tracking Branch**: A local branch that is linked to a remote branch (e.g., local \`main\` tracks \`origin/main\`).`
+            },
+            {
+                title: "Advanced",
+                content: `# Advanced Commands & Concepts\n\nFor solving complex problems, rewriting history, and professional workflows.\n\n---\n\n## 1. Power User Commands\n\n### History Manipulation\n* **\`git reset --hard\`**: The "Nuclear" option. Resets files and history to a specific point. Destroys unsaved work.\n* **\`git rebase -i HEAD~n\`**: Interactive rebase. Allows you to squash, rename, or reorder the last \`n\` commits.\n* **\`git cherry-pick <hash>\`**: Picks a specific commit from another branch and applies it to your current branch.\n\n### Recovery\n* **\`git reflog\`**: The safety net. Shows a log of every movement of the HEAD pointer, allowing you to recover "lost" commits.\n\n### Optimization\n* **\`git clean -fd\`**: Forcefully deletes all untracked files and directories.\n* **\`git bisect\`**: A binary search tool to find exactly which commit introduced a bug.\n* **\`git push --force-with-lease\`**: A safer version of force push. Only overwrites remote if no one else has pushed since you last fetched.\n\n---\n\n## 2. Key Concepts\n* **Rewriting History**: Changing commits that have already happened. Dangerous on shared branches.\n* **Squashing**: Combining multiple small "work in progress" commits into one clean commit before merging.\n* **Hooks**: Scripts that run automatically before actions (e.g., \`pre-commit\` to run linting).\n* **Upstream**: In a fork workflow, this refers to the original repository you forked from.`
+            }
+        ];
 
-        // Hide Intro, Show Levels
-        document.getElementById("intro-view").classList.add("hidden");
-        document.getElementById("intro-view").classList.remove("block");
-        document.getElementById("level-view").classList.remove("hidden");
-        document.getElementById("level-view").classList.add("block");
+        // --- UI LOGIC ---
+        let currentScenarioIndex = 0;
 
-        // Render Markdown
-        const contentDiv = document.getElementById("markdown-render");
-        contentDiv.style.opacity = "0"; // reset opacity for fade effect
-
-        setTimeout(() => {
-          contentDiv.innerHTML = marked.parse(levels[index].content);
-          contentDiv.style.opacity = "1";
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }, 100);
-
-        // Update Active Nav State
-        document.querySelectorAll("nav button").forEach((btn, idx) => {
-          if (idx === index) {
-            btn.classList.add("nav-active", "text-primary");
-            btn.classList.remove("text-gray-500", "border-transparent");
-          } else {
-            btn.classList.remove("nav-active", "text-primary");
-            btn.classList.add("text-gray-500", "border-transparent");
-          }
-        });
-
-        // Handle Pagination Buttons
-        const prevBtn = document.getElementById("prev-btn");
-        const nextBtn = document.getElementById("next-btn");
-
-        if (index === 0) {
-          prevBtn.classList.add("hidden");
-        } else {
-          prevBtn.classList.remove("hidden");
+        function initHome() {
+            const container = document.getElementById('scenario-grid-container');
+            container.innerHTML = categories.map(cat => {
+                // Filter scenarios for this category
+                const catScenarios = scenarios.map((s, index) => ({...s, globalIndex: index})).filter(s => s.cat === cat.id);
+                
+                return `
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">${cat.title}</h3>
+                        <p class="text-sm text-gray-500 mb-6">${cat.desc}</p>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            ${catScenarios.map(s => `
+                                <div onclick="loadScenario(${s.globalIndex})" class="group cursor-pointer bg-white p-6 rounded-xl border border-gray-100 hover:border-primary hover:shadow-lg transition-all">
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <div class="w-8 h-8 rounded-full bg-primary-light text-primary flex items-center justify-center font-bold text-sm">
+                                            ${s.globalIndex + 1}
+                                        </div>
+                                        <h4 class="font-bold text-gray-900 group-hover:text-primary transition-colors">${s.title.split('. ')[1] || s.title}</h4>
+                                    </div>
+                                    <p class="text-xs text-gray-500 line-clamp-2">${s.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
-        if (index === levels.length - 1) {
-          nextBtn.classList.add("hidden");
-        } else {
-          nextBtn.classList.remove("hidden");
+        function loadHome() {
+            document.getElementById('intro-view').classList.remove('hidden');
+            document.getElementById('intro-view').classList.add('block');
+            document.getElementById('doc-view').classList.add('hidden');
+            document.getElementById('scenario-view').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-      }
 
-      function nextLevel() {
-        if (currentLevel < levels.length - 1) {
-          loadLevel(currentLevel + 1);
+        function loadDoc(index) {
+            document.getElementById('intro-view').classList.add('hidden');
+            document.getElementById('intro-view').classList.remove('block');
+            document.getElementById('scenario-view').classList.add('hidden');
+            document.getElementById('doc-view').classList.remove('hidden');
+            document.getElementById('doc-view').classList.add('block');
+
+            const contentDiv = document.getElementById('markdown-render');
+            contentDiv.style.opacity = '0';
+            setTimeout(() => {
+                contentDiv.innerHTML = marked.parse(docs[index].content);
+                contentDiv.style.opacity = '1';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 100);
         }
-      }
 
-      function prevLevel() {
-        if (currentLevel > 0) {
-          loadLevel(currentLevel - 1);
-        }
-      }
+        function loadScenario(index) {
+            currentScenarioIndex = index;
+            document.getElementById('intro-view').classList.add('hidden');
+            document.getElementById('intro-view').classList.remove('block');
+            document.getElementById('doc-view').classList.add('hidden');
+            document.getElementById('scenario-view').classList.remove('hidden');
+            document.getElementById('scenario-view').classList.add('block');
 
-      function renderFAQs() {
-        const container = document.getElementById("faq-container");
-        container.innerHTML = faqs
-          .map(
-            (item) => `
-                <div class="bg-white p-6 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                    <h4 class="font-semibold text-gray-900 mb-2 flex items-start">
-                        <span class="text-primary mr-2">Q.</span> ${item.q}
-                    </h4>
-                    <p class="text-sm text-gray-600 leading-relaxed pl-6">${item.a}</p>
+            const data = scenarios[index];
+            const container = document.getElementById('scenario-content');
+            
+            let stepsHtml = data.steps.map(s => `
+                <div class="flex gap-4 mb-10 relative">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold z-10 relative shadow-sm">
+                        ${s.step}
+                    </div>
+                    <div class="absolute top-8 left-4 bottom-[-40px] w-0.5 bg-gray-200 -z-0 last:hidden"></div>
+                    <div class="flex-grow pt-1">
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">${s.title}</h4>
+                        <p class="text-gray-600 mb-4">${s.desc}</p>
+                        ${s.code ? `<pre class="bg-gray-800 text-green-400 p-4 rounded-lg text-sm font-mono overflow-x-auto border border-gray-700 shadow-md"><code>${s.code}</code></pre>` : ''}
+                    </div>
                 </div>
-            `
-          )
-          .join("");
-      }
+            `).join('');
 
-      // Initialize - Load Home by default
-      document.addEventListener("DOMContentLoaded", () => {
-        loadHome();
-        renderFAQs();
-      });
+            container.innerHTML = `
+                <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm mb-8">
+                    <div class="flex items-center gap-2 mb-4">
+                         <span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary-light px-2 py-1 rounded">Workflow ${index + 1} / ${scenarios.length}</span>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-gray-900 mb-2">${data.title}</h2>
+                    <p class="text-lg text-gray-500 border-b border-gray-100 pb-6 mb-8">${data.desc}</p>
+                    <div class="max-w-3xl">
+                        ${stepsHtml}
+                    </div>
+                </div>
+            `;
+            
+            const prevBtn = document.getElementById('prev-scenario-btn');
+            const nextBtn = document.getElementById('next-scenario-btn');
+            
+            if(index === 0) prevBtn.classList.add('invisible'); else prevBtn.classList.remove('invisible');
+            if(index === scenarios.length - 1) {
+                nextBtn.innerText = "Finish";
+                nextBtn.onclick = loadHome;
+            } else {
+                nextBtn.innerText = "Next Workflow";
+                nextBtn.onclick = nextScenario;
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextScenario() {
+            if (currentScenarioIndex < scenarios.length - 1) loadScenario(currentScenarioIndex + 1);
+        }
+
+        function prevScenario() {
+            if (currentScenarioIndex > 0) loadScenario(currentScenarioIndex - 1);
+        }
+        
+        function scrollToWorkflows() {
+            loadHome();
+            setTimeout(() => {
+                document.getElementById('workflows-section').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        function scrollToDocs() {
+            loadHome();
+            setTimeout(() => {
+                document.getElementById('docs-section').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initHome();
+            loadHome();
+        });
+
     </script>
-  </body>
+</body>
 </html>
