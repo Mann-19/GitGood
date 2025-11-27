@@ -1,12 +1,12 @@
-Git Good - Get better at git 🌳
+## Git Good - Get better at git 🌳
 
-Version Control, Without the Confusion.
+| Version Control, Without the Confusion.
 
 A streamlined, interactive guide designed to help developers master Git through real-world scenarios and jargon-free documentation.
 
-🔗 Live Demo (Replace with your actual deployment link)
+🔗 Live Demo
 
-🎯 The Mission
+#### 🎯 The Mission
 
 Let's be honest: Git is scary.
 
@@ -18,9 +18,9 @@ Most tutorials teach you the commands (git add, git commit), but they rarely tea
 
 "I just merged and everything is broken. How do I go back?"
 
-I built Git Essentials to bridge the gap between "memorizing commands" and "understanding the lifecycle of code". It is designed to be a panic button and a guidebook for developers who want to feel confident using version control.
+I built GitGood to bridge the gap between "memorizing commands" and "understanding the lifecycle of code". It is designed to be a panic button and a guidebook for developers who want to feel confident using version control.
 
-✨ Features
+##### ✨ Features
 
 1. 🚀 Real-World Workflows (Scenario-Based)
 
@@ -52,7 +52,7 @@ No Installation: No npm, no servers, no databases. Just open it in a browser.
 
 Clean Design: Minimalist interface focused on readability.
 
-🛠️ Quick Start
+##### 🛠️ Quick Start
 
 This project is built as a static, single-file application. You don't need to install Node.js, Python, or any dependencies.
 
@@ -63,7 +63,7 @@ git clone [https://github.com/Mann-19/GitGood.git](https://github.com/Mann-19/Gi
 Run it
 Simply navigate to the folder and double-click index.html to open it in your web browser.
 
-🤝 Contributing
+##### 🤝 Contributing
 
 This project is open-source and beginner-friendly! If you have a better explanation for a command, or want to add a new "Scenario" that helped you:
 
@@ -77,7 +77,7 @@ Add your content.
 
 Submit a Pull Request!
 
-📄 License
+##### 📄 License
 
 This project is licensed under the MIT License - feel free to use it, modify it, and share it with your team.
 
