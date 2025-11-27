@@ -3,7 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Git Essentials</title>
+    <title>Git Good - Get better at git</title>
+    <!-- Favicon: A Green Git Branch Icon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233CB35A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='6' y1='3' x2='6' y2='15'%3E%3C/line%3E%3Ccircle cx='18' cy='6' r='3'%3E%3C/circle%3E%3Ccircle cx='6' cy='18' r='3'%3E%3C/circle%3E%3Cpath d='M18 9a9 9 0 0 1-9 9'%3E%3C/path%3E%3C/svg%3E"
+    />
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Marked.js for Markdown parsing -->
@@ -43,6 +50,10 @@
     />
 
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         font-family: "Inter", sans-serif;
         background-color: #fafafa;
@@ -160,11 +171,24 @@
           onclick="loadHome()"
           class="flex items-center gap-3 group focus:outline-none"
         >
-          <i
-            class="ph-fill ph-git-branch text-primary text-2xl group-hover:scale-110 transition-transform"
-          ></i>
+          <!-- Replaced Phosphor Icon with the Favicon SVG for consistency -->
+          <svg
+            class="w-8 h-8 text-primary group-hover:scale-110 transition-transform"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="6" y1="3" x2="6" y2="15"></line>
+            <circle cx="18" cy="6" r="3"></circle>
+            <circle cx="6" cy="18" r="3"></circle>
+            <path d="M18 9a9 9 0 0 1-9 9"></path>
+          </svg>
           <span class="font-bold text-lg tracking-tight text-gray-900"
-            >Git<span class="text-primary">Essentials</span></span
+            >Git<span class="text-primary">Good</span></span
           >
         </button>
 
